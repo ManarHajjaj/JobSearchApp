@@ -3,6 +3,7 @@ import { verifyToken } from "../../middlewares/verifyToken.js";
 import { checkRole } from "../../middlewares/checkRole.js";
 import {
   addApplication,
+  downloadExcelSheet,
   getAllApplicationForSpecificJob,
   getAllApplications,
 } from "./application.controllers.js";
@@ -23,4 +24,7 @@ applicationRouter
     validate(applicationIdValidation),
     getAllApplicationForSpecificJob
   );
+applicationRouter
+  .route("/downloadExcel")
+  .post(verifyToken(), downloadExcelSheet);
 export default applicationRouter;
